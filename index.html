@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Alfaz Nawaz Khan Shrabon | Data & Web Developer</title>
+    <meta name="description" content="Portfolio of Alfaz Nawaz - Diploma Engineer specializing in real-world data analysis, dashboards, and vibecoded web applications.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0b1120;
+            --bg-card: #151e32;
+            --bg-accent: #0f172a;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --border: #1e293b;
+            --success: #22c55e;
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000; padding: 1rem 0;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-weight: 500;
+            transition: var(--transition); font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .menu-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; }
+
+        /* Sections */
+        section { padding: 6rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .section-title {
+            font-size: 2rem; margin-bottom: 2.5rem; position: relative; display: inline-block;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -8px; left: 0; width: 50px; height: 4px;
+            background: var(--accent); border-radius: 2px;
+        }
+
+        /* Hero */
+        #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 5rem; }
+        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.5rem; }
+        .hero-content h1 span { color: var(--accent); }
+        .hero-content h2 { font-size: 1.25rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 1.5rem; }
+        .hero-content p { max-width: 650px; margin: 0 auto 2rem; color: var(--text-secondary); }
+        .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-primary { background: var(--accent); color: var(--bg-dark); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--border); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* About & Stats */
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .stat-card {
+            background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .stat-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .stat-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .stat-card p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Skills */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .skill-category { background: var(--bg-card); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border); }
+        .skill-category h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-primary); }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag {
+            background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 0.35rem 0.75rem;
+            border-radius: 20px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .project-card {
+            background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);
+            transition: var(--transition); display: flex; flex-direction: column;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .project-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .project-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; flex-grow: 1; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+        .tech { background: var(--border); color: var(--text-secondary); padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; }
+
+        /* Education */
+        .timeline { border-left: 2px solid var(--border); padding-left: 2rem; margin-top: 1.5rem; }
+        .timeline-item { margin-bottom: 2rem; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -2.35rem; top: 0; width: 12px; height: 12px;
+            background: var(--accent); border-radius: 50%; border: 2px solid var(--bg-dark);
+        }
+        .timeline-item h3 { color: var(--text-primary); font-size: 1.1rem; }
+        .timeline-item .meta { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin: 0.25rem 0; }
+        .timeline-item p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Contact */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .contact-item i { color: var(--accent); font-size: 1.2rem; margin-top: 4px; }
+        .contact-item h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .contact-item a, .contact-item p { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+        .contact-item a:hover { color: var(--accent); }
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a {
+            width: 40px; height: 40px; background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); transition: var(--transition);
+        }
+        .social-links a:hover { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); }
+
+        /* Footer */
+        footer {
+            text-align: center; padding: 2rem 1.5rem; border-top: 1px solid var(--border);
+            color: var(--text-secondary); font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; top: 60px; right: -100%; background: var(--bg-card);
+                flex-direction: column; width: 70%; height: 100vh; padding: 2rem;
+                border-left: 1px solid var(--border); transition: var(--transition);
+            }
+            .nav-links.active { right: 0; }
+            .menu-toggle { display: block; }
+            section { padding: 4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Alfaz<span>.</span></a>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm <span>Alfaz Nawaz</span></h1>
+                <h2>Data Analyst & Web Developer</h2>
+                <p>Aspiring Diploma Engineer focused on building real-world data projects and vibecoded web applications. Turning raw data into actionable insights with Python, Power BI, and modern web tools.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p style="color: var(--text-secondary); max-width: 800px;">
+                I'm a Diploma Engineering graduate in Computer Science & Technology from Rajshahi Polytechnic Institute. With a strong foundation in data cleaning, analysis, and dashboard creation, I focus on practical implementation and continuous learning. I dedicate 30 minutes daily to skill development and job preparation, leveraging AI tools and prompt engineering to accelerate real-world project delivery.
+            </p>
+            <div class="about-grid">
+                <div class="stat-card"><h3>3.10/4.0</h3><p>Diploma CGPA</p></div>
+                <div class="stat-card"><h3>11+</h3><p>Completed Projects</p></div>
+                <div class="stat-card"><h3>Daily</h3><p>30-Minute Learning Commitment</p></div>
+                <div class="stat-card"><h3>Natore, BD</h3><p>Based in Bangladesh</p></div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming & Web</h3>
+                    <div class="skill-tags"><span class="tag">Python</span><span class="tag">Flask (Basic)</span><span class="tag">Vibe Coding</span><span class="tag">SQL</span></div>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Visualization</h3>
+                    <div class="skill-tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Power BI</span></div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Concepts</h3>
+                    <div class="skill-tags"><span class="tag">Excel</span><span class="tag">Data Cleaning</span><span class="tag">Dashboard Creation</span><span class="tag">PowerPoint</span></div>
+                </div>
+                <div class="skill-category">
+                    <h3>Strengths</h3>
+                    <div class="skill-tags"><span class="tag">Prompt Engineering</span><span class="tag">AI Integration</span><span class="tag">Consistent Learner</span><span class="tag">Practical Focus</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card"><h3>Health & Fitness Tracker</h3><p>Analyzed weekly fitness data of 20 individuals using NumPy and pandas for trend identification.</p><div class="project-tech"><span class="tech">NumPy</span><span class="tech">pandas</span></div></div>
+                <div class="project-card"><h3>Sales Data Analyzer</h3><p>Processed and analyzed sales datasets to extract actionable business insights and KPIs.</p><div class="project-tech"><span class="tech">pandas</span></div></div>
+                <div class="project-card"><h3>COVID Data Dashboard</h3><p>Created an interactive dashboard to track and analyze global COVID-19 trends.</p><div class="project-tech"><span class="tech">pandas</span><span class="tech">Power BI</span></div></div>
+                <div class="project-card"><h3>Student Result Portal</h3><p>System for managing, filtering, and analyzing student academic performance records.</p><div class="project-tech"><span class="tech">pandas</span><span class="tech">Excel</span></div></div>
+                <div class="project-card"><h3>Student Performance Dashboard</h3><p>Visualized academic metrics using charts and graphs for clear performance tracking.</p><div class="project-tech"><span class="tech">matplotlib</span><span class="tech">seaborn</span></div></div>
+                <div class="project-card"><h3>E-commerce Order Dashboard</h3><p>Analyzed and visualized order volumes, revenue, and customer behavior patterns.</p><div class="project-tech"><span class="tech">matplotlib</span><span class="tech">seaborn</span></div></div>
+                <div class="project-card"><h3>Excel Revenue Dashboard</h3><p>Imported, cleaned, and visualized financial data with automated calculations.</p><div class="project-tech"><span class="tech">Excel</span><span class="tech">Python</span></div></div>
+                <div class="project-card"><h3>Employee Management System</h3><p>Managed employee records with advanced filtering, sorting, and analytical reporting.</p><div class="project-tech"><span class="tech">pandas</span></div></div>
+                <div class="project-card"><h3>Product Inventory System</h3><p>Tracked stock levels, analyzed inventory turnover, and generated restock alerts.</p><div class="project-tech"><span class="tech">pandas</span></div></div>
+                <div class="project-card"><h3>Survey Data Analyzer</h3><p>Processed survey responses to identify demographic trends and satisfaction metrics.</p><div class="project-tech"><span class="tech">pandas</span></div></div>
+                <div class="project-card"><h3>Sports Stats Analyzer</h3><p>Evaluated player and team performance using structured statistical datasets.</p><div class="project-tech"><span class="tech">pandas</span></div></div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Diploma in Engineering (Computer Science & Technology)</h3>
+                    <div class="meta">Rajshahi Polytechnic Institute • Completed 2026</div>
+                    <p>CGPA: 3.10 / 4.00 • Focused on data structures, programming fundamentals, and applied computing.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <div class="meta">Gopalpur High School, Lalpur, Natore • Completed 2021</div>
+                    <p>GPA: 4.89 / 5.00 • Strong foundation in mathematics, science, and analytical thinking.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Open to internships, freelance data projects, and junior developer roles. Let's build something impactful together.</p>
+            <div class="contact-grid">
+                <div class="contact-item"><i class="fas fa-envelope"></i><div><h4>Email</h4><a href="mailto:your.email@example.com">your.email@example.com</a></div></div>
+                <div class="contact-item"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>+88 01714 - 8xxxxx</p></div></div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>Gopalpur, Lalpur, Natore, Bangladesh</p></div></div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1CtKbFbs4C/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/alfaz-nawaz-012961237/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/alfaznawaz2016-hub" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Md. Alfaz Nawaz Khan Shrabon. Built with Python, Data & Passion.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+        // Dynamic Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth Scroll & Active Link Highlight
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (scrollY >= top) current = section.getAttribute('id');
+            });
+            navItems.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) a.style.color = 'var(--accent)';
+                else a.style.color = '';
+            });
+        });
+    </script>
+</body>
+</html>
